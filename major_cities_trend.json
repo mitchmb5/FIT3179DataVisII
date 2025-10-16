@@ -21,5 +21,7 @@
     "y": {"field": "Temp", "type": "quantitative", "title": "Average Max Temperature (°C)"},
     "tooltip": [{"field": "name"}, {"field": "Year"}, {"field": "Temp"}]
   },
-  "title": "Average Maximum Temperature by Major City"
+  "title": "Average Maximum Temperature by Major City",
+  "width": 800,
+  "height": 300
 }

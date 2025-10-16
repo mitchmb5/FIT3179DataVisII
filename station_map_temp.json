@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Australian Weather Stations Map, colored by overall average maximum temperature.",
+  "title": "Australian Weather Stations: Average Max Temperature by Location",
+  "width": 800,
+  "height": 500,
+  "data": { "url": "AustralianAverageMaxTemp.csv" },
+  "projection": {"type": "mercator"},
+  "transform": [
+    {
+      "aggregate": [{"op": "mean", "field": "Temp", "as": "AvgTemp"}],
+      "groupby": ["name", "lat", "long"]
+    }
+  ],
+  "mark": "circle",
+  "encoding": {
+    "longitude": {"field": "long", "type": "quantitative"},
+    "latitude": {"field": "lat", "type": "quantitative"},
+    "size": {"value": 50},
+    "color": {
+      "field": "AvgTemp",
+      "type": "quantitative",
+      "scale": {"range": "heatmap"},
+      "legend": {"title": "Avg Max Temp (°C)"}
+    },
+    "tooltip": [
+      {"field": "name", "title": "Station"},
+      {"field": "AvgTemp", "title": "Avg Max Temp", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"}
+  }
+}

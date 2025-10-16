@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive map of stations by year",
+  "projection": {"type": "mercator"},
+  "data": { "url": "AustralianAverageMaxTemp.csv" },
+  "params": [{"name": "ChosenYear", "value": 1980, "bind": {"input": "range", "min": 1975, "max": 2019, "step": 1}}],
+  "transform": [{"filter": "datum.Year == ChosenYear"}],
+  "mark": {"type": "circle", "stroke": "black", "strokeWidth": 0.3},
+  "encoding": {
+    "longitude": {"field": "long", "type": "quantitative"},
+    "latitude": {"field": "lat", "type": "quantitative"},
+    "color": {"field": "Temp", "type": "quantitative", "scale": {"scheme": "reds"}},
+    "tooltip": [{"field": "name"}, {"field": "Year"}, {"field": "Temp"}]},
+  "title": "Station Temperatures by Year (Interactive Slider)",
+  "width": 800,
+  "height": 300
+}

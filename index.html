@@ -1,34 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Australian Temperature Trend</title>
+  <title>Australian Temperature Trend Analysis</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #0056b3;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .content-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+        color: #0056b3;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+        margin-top: 40px;
+    }
+    p.description {
+      font-size: 1.1em;
+      line-height: 1.6;
+      border-left: 5px solid #0056b3;
+      padding-left: 15px;
+      margin-bottom: 30px;
+    }
+    /* Style for the visualization container */
+    .vis-box {
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 50px; /* Add space between charts */
+    }
+  </style>
 </head>
 <body>
 
-  <div id="vis"></div>
+  <header>
+    <h1>Australian Climate Data Visualization</h1>
+  </header>
+
+  <div class="content-container">
+
+    <h2>Average Maximum Temperature Trend by City</h2>
+    <p class="description">
+      This interactive line chart displays the Average Annual Maximum Temperature trends for selected major Australian cities/stations. Use the dropdown menu on the chart to select and compare trends from different locations.
+    </p>
+    <div id="vis" class="vis-box"></div>
+
+    <hr>
+    <h2>Map of All Weather Stations by Year</h2>
+    <p class="description">
+      This map shows the location of every weather station in the dataset. The color of each point represents the station's maximum temperature per years, illustrating the climate variation across the country.
+    </p>
+    <div id="vis-map" class="vis-box"></div>
+
+    <hr>
+    <h2>Map of All Weather Stations by Average Temperature</h2>
+    <p class="description">
+      This map shows the location of every weather station in the dataset. The color of each point represents the station's overall average maximum temperature across all recorded years, illustrating the climate variation across the country.
+    </p>
+    <div id="vis-map2" class="vis-box"></div>
+    
+
+
+  </div>
 
   <script type="text/javascript">
-    // 1. Define the path to your Vega-Lite JSON specification file
-    var spec_url = "major_cities_trend.json";
-
-    // 2. Define options for Vega-Embed (optional, but helpful)
+    // Common options for both charts
     var embed_options = {
-      // Set the renderer to 'svg' for high-quality, scalable graphics
       "renderer": "svg",
-      // Set the actions to false to hide the default "Open in Vega Editor" link
-      "actions": false
+      "actions": false,
+      "theme": "default"
     };
 
-    // 3. Use vega-embed to load the specification and render the visualization
-    vegaEmbed('#vis', spec_url, embed_options)
+    // --- EMBED CHART 1: TREND ---
+    var spec_url_trend = "major_cities_trend.json";
+    vegaEmbed('#vis', spec_url_trend, embed_options)
       .then(function(result) {
-        // You can access the Vega view object here (result.view)
-        console.log("Visualization successfully rendered.");
+        console.log("Trend Visualization rendered.");
       })
       .catch(console.error);
+
+    // --- EMBED CHART 2: MAP ---
+    var spec_url_map = "interactive_year_filter.json";
+    vegaEmbed('#vis-map', spec_url_map, embed_options)
+      .then(function(result) {
+        console.log("Map Visualization rendered.");
+      })
+      .catch(console.error);
+
+    var spec_url_map2 = "station_map_temp.json";
+    vegaEmbed('#vis-map2', spec_url_map2, embed_options)
+      .then(function(result) {
+        console.log("Map Visualization rendered.");
+      })
+      .catch(console.error);
+
   </script>
 
 </body>
