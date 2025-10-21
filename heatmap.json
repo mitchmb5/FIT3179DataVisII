@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "AustralianAverageMaxTemp.csv"},
-  "title": "Frequency of Annual Temperature Readings Over Time (Heatmap)",
-  "width": 600,
-  "height": 400,
+  "title": "Frequency of Annual Temperature Readings Over Time",
+  "width": 650,
+  "height": 300,
   "mark": "rect",
   "encoding": {
     "x": {

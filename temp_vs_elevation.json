@@ -15,5 +15,5 @@
     "y": {"field": "Temp", "type": "quantitative", "title": "Temperature (°C)"},
     "tooltip": [{"field": "name"}, {"field": "Elevation"}, {"field": "Temp"}]
   },
-  "title": "Temperature vs. Elevation (All Stations)"
+  "title": "Temperature vs. Elevation"
 }

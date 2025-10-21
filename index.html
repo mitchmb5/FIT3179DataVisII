@@ -99,20 +99,19 @@
   </header>
 
   <div class="content-container">
-    <h2>Sample Title</h2>
+    <h2>Which Factors Play a Role in Influencing the Average Daily Maximum Temperature?</h2>
     <p class="description">
-      Overall summary of assignment
+      A common metric in analysing climate data is the average daily maximum temperature. This metric
+      gives an insight into overall temperature trends, and can be used to determine which year was "hotter" on average.
     </p>
   </div>
 
   <div class="row">
     <div class="text col-1">
-      <p class="description">
-        Map of All Weather Stations by Average Temperature
-      </p>
-      <p strong>
-        This map shows the location of every weather station in the dataset. <br>
-        The color of each point represents the station's overall average maximum temperature across all recorded years, illustrating the climate variation across the country.
+      <p>
+        This map shows the location of every weather station in the dataset. <br> <br>
+        The color of each point represents the station's overall average maximum temperature across all recorded years, illustrating the climate variation across the country. <br> <br>
+        It displays that locations further north in Australia tend to have a higher average maximum temperature.
       </p>
     </div>
     <div class="plot col-2" id="vis1"></div>
@@ -120,36 +119,38 @@
 
   <div class="row">
     <div class="text col-1" id="vis2"></div>
-    <div class="text col-1">
+    <div class="plot col-2" id="vis4"></div>
+  </div>
+  
+  <div class="row">
+    <div class="text col-1" id="vis3"></div>
+    <div class="text col-2">
       <p class="description">
-        Something something
+        How Does the Average Daily Maximum Temperature Vary by Year?
       </p>
       <p strong>
-        something <br>
-        some words
+        The above visualisations intend to investigate the trends that may occur as the average maximum
+        temperature from each year is displayed. <br> <br>
+        The heatmap displays the distribution of which temperature range is most common across each timeframe,
+        while the line chart displays the overall trend at various major cities across the country.
       </p>
     </div>
   </div>
 
   <div class="row">
-    <div class="text col-1">
+    <div class="text col-3">
       <p class="description">
-        Heatmap
+        What Effect does Geography Have on the Average Daily Maximum Temperature?
       </p>
       <p strong>
-        Heatmap <br>
-        Something
+        Rather than looking at changes in the trends across time, specific geographical factors can be analysed to
+        determine their relationship with the average maximum temperature. In this case, elevation and latitude.
+        <br> <br>
+        It displays that through each year documented, elevation had no considerable effect on the average maximum
+        temperature, while an increase in latitude, or moving closer to the equator, had a strong positive 
+        correlation with an increasing average maximum temperature.
       </p>
     </div>
-    <div class="plot col-2" id="vis4"></div>
-  </div>
-
-  <div class="content-container">
-    <h2>Map of All Weather Stations by Year</h2>
-    <p class="description">
-      This map shows the location of every weather station in the dataset. The color of each point represents the station's maximum temperature per years, illustrating the climate variation across the country.
-    </p>
-    <div id="vis3" class="vis-box"></div>
   </div>
 
   <div class="row">
@@ -160,8 +161,13 @@
   <div class="row">
     <div class="text col-2">
       <p class="description">
-        testing <br>
-        testing testingtestingtestingtestingtestingtestingtestingtestingtestingtestingtesting
+        Is This What We Expected?
+      </p>
+      <p>
+        It would be expected that the collected data would follow a normal distribution, as it is a naturally
+        determined result. <br> <br>
+        This is largely what is observed, with a small increase in the 32-34 degree range, and small decrease
+        in the 14-16 degree range, most likely due to the location of the weather stations.
       </p>
     </div>
     <div class="plot col-1" id="vis7"></div>
@@ -170,7 +176,8 @@
   <footer>
     <p>
     FIT3179 Data Visualisation 2 <br>
-    Author : Mitchell Bellingham
+    Author : Mitchell Bellingham <br>
+    Date Last Updated: 21/10/2025
     </p>
   </footer>
 

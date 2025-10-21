@@ -26,20 +26,6 @@
     "y": {"field": "Temp", "type": "quantitative", "title": "Average Max Temperature (°C)"},
     "tooltip": [{"field": "name"}, {"field": "Year"}, {"field": "Temp"}]
   }
-},
-{
-"data": { "url": "AustralianAverageMaxTemp.csv" },
-  "mark": {"type": "line", "point": false, "interpolate": "monotone", "stroke":"orange"},
-  "transform": [
-    {
-      "aggregate": [{"op": "mean", "field": "Temp", "as": "AvgTemp"}],
-        "groupby": ["Year"]}
-],
-  "encoding": {
-    "x": {"field": "Year", "type": "temporal", "title": "Year"},
-    "y": {"field": "AvgTemp", "type": "quantitative", "title": "Average Max Temperature (°C)"},
-    "tooltip": [{"field": "name"}, {"field": "Year"}, {"field": "Temp"}]
-  }
 }
   ]
 }
