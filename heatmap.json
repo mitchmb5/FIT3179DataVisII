@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "AustralianAverageMaxTemp.csv"},
+  "title": "Frequency of Annual Temperature Readings Over Time (Heatmap)",
+  "width": 600,
+  "height": 400,
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "bin": {"maxbins": 30},
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "Temp",
+      "bin": {"maxbins": 30},
+      "type": "ordinal",
+      "title": "Temperature (°C)"
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Record Count",
+      "scale": {"scheme": "orangered"}
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "bin": {"maxbins": 30}, "title": "Year Range"},
+      {"field": "Temp", "type": "ordinal", "bin": {"maxbins": 30}, "title": "Temp Range (°C)"},
+      {"aggregate": "count", "title": "Count"}
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Average maximum temperature over time by station",
+  "params": [
+    {
+      "name": "selectedStation",
+      "bind": {
+        "input": "select",
+        "options": ["DARWIN", "MELBOURNE(OLYMPICPARK)", "SYDNEY (OBSERVATORYHILL)", "PERTH AIRPORT", "HOBART(ELLERSLIEROAD)", "BRISBANEAERO"],
+        "labels": ["Darwin", "Melbourne", "Sydney", "Perth", "Hobart", "Brisbane"],
+        "name": "Select a station: "
+      },
+      "value": "MELBOURNE(OLYMPICPARK)"
+    }
+  ],
+  "title": "Average Maximum Temperature by Major City",
+  "width": 400,
+  "height": 300,
+  "layer": [
+  {
+  "data": { "url": "AustralianAverageMaxTemp.csv" },
+  "transform": [{"filter": "!selectedStation || datum.name == selectedStation"}],
+  "mark": {"type": "line", "point": false, "interpolate": "monotone", "stroke":"red"},
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal", "title": "Year"},
+    "y": {"field": "Temp", "type": "quantitative", "title": "Average Max Temperature (°C)"},
+    "tooltip": [{"field": "name"}, {"field": "Year"}, {"field": "Temp"}]
+  }
+},
+{
+"data": { "url": "AustralianAverageMaxTemp.csv" },
+  "mark": {"type": "line", "point": false, "interpolate": "monotone", "stroke":"orange"},
+  "transform": [
+    {
+      "aggregate": [{"op": "mean", "field": "Temp", "as": "AvgTemp"}],
+        "groupby": ["Year"]}
+],
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal", "title": "Year"},
+    "y": {"field": "AvgTemp", "type": "quantitative", "title": "Average Max Temperature (°C)"},
+    "tooltip": [{"field": "name"}, {"field": "Year"}, {"field": "Temp"}]
+  }
+}
+  ]
+}

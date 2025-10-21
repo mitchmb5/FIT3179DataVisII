@@ -11,11 +11,11 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
+      background-color: #f9eedf;
       color: #333;
     }
     header {
-      background-color: #0056b3;
+      background-color: #ef8a42;
       color: white;
       padding: 20px 0;
       text-align: center;
@@ -26,15 +26,15 @@
       font-size: 2.5em;
     }
     .content-container {
-      max-width: 1000px;
-      margin: 20px auto;
+      max-width: 1500px;
+      margin: 20px;
       padding: 20px;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     h2 {
-        color: #0056b3;
+        color: #ef8a42;
         border-bottom: 2px solid #ddd;
         padding-bottom: 10px;
         margin-top: 40px;
@@ -42,7 +42,7 @@
     p.description {
       font-size: 1.1em;
       line-height: 1.6;
-      border-left: 5px solid #0056b3;
+      border-left: 5px solid #ef8a42;
       padding-left: 15px;
       margin-bottom: 30px;
     }
@@ -51,6 +51,44 @@
       padding: 10px;
       text-align: center;
       margin-bottom: 50px; /* Add space between charts */
+    }
+
+    footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 60px;
+    }
+    
+    .row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+      align-items: start;
+    }
+
+    .col-1 { grid-column: span 1; }
+    .col-2 { grid-column: span 2; }
+    .col-3 { grid-column: span 3; }
+
+    .text {
+      background: #ffffff;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .plot {
+      background: white;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -61,30 +99,80 @@
   </header>
 
   <div class="content-container">
-
-    <h2>Average Maximum Temperature Trend by City</h2>
+    <h2>Sample Title</h2>
     <p class="description">
-      This interactive line chart displays the Average Annual Maximum Temperature trends for selected major Australian cities/stations. Use the dropdown menu on the chart to select and compare trends from different locations.
+      Overall summary of assignment
     </p>
-    <div id="vis" class="vis-box"></div>
+  </div>
 
-    <hr>
+  <div class="row">
+    <div class="text col-1">
+      <p class="description">
+        Map of All Weather Stations by Average Temperature
+      </p>
+      <p strong>
+        This map shows the location of every weather station in the dataset. <br>
+        The color of each point represents the station's overall average maximum temperature across all recorded years, illustrating the climate variation across the country.
+      </p>
+    </div>
+    <div class="plot col-2" id="vis1"></div>
+  </div>
+
+  <div class="row">
+    <div class="text col-1" id="vis2"></div>
+    <div class="text col-1">
+      <p class="description">
+        Something something
+      </p>
+      <p strong>
+        something <br>
+        some words
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="text col-1">
+      <p class="description">
+        Heatmap
+      </p>
+      <p strong>
+        Heatmap <br>
+        Something
+      </p>
+    </div>
+    <div class="plot col-2" id="vis4"></div>
+  </div>
+
+  <div class="content-container">
     <h2>Map of All Weather Stations by Year</h2>
     <p class="description">
       This map shows the location of every weather station in the dataset. The color of each point represents the station's maximum temperature per years, illustrating the climate variation across the country.
     </p>
-    <div id="vis-map" class="vis-box"></div>
-
-    <hr>
-    <h2>Map of All Weather Stations by Average Temperature</h2>
-    <p class="description">
-      This map shows the location of every weather station in the dataset. The color of each point represents the station's overall average maximum temperature across all recorded years, illustrating the climate variation across the country.
-    </p>
-    <div id="vis-map2" class="vis-box"></div>
-    
-
-
+    <div id="vis3" class="vis-box"></div>
   </div>
+
+  <div class="row">
+    <div class="plot col-1" id="vis6"></div>
+    <div class="plot col-1" id="vis5"></div>
+  </div>
+
+  <div class="row">
+    <div class="text col-2">
+      <p class="description">
+        testing <br>
+        testing testingtestingtestingtestingtestingtestingtestingtestingtestingtestingtesting
+      </p>
+    </div>
+    <div class="plot col-1" id="vis7"></div>
+  </div>
+
+  <footer>
+    <p>
+    FIT3179 Data Visualisation 2 <br>
+    Author : Mitchell Bellingham
+    </p>
+  </footer>
 
   <script type="text/javascript">
     // Common options for both charts
@@ -94,24 +182,50 @@
       "theme": "default"
     };
 
-    // --- EMBED CHART 1: TREND ---
-    var spec_url_trend = "major_cities_trend.json";
-    vegaEmbed('#vis', spec_url_trend, embed_options)
+    var vis2 = "year_trend.json";
+    vegaEmbed('#vis2', vis2, embed_options)
       .then(function(result) {
         console.log("Trend Visualization rendered.");
       })
       .catch(console.error);
 
-    // --- EMBED CHART 2: MAP ---
-    var spec_url_map = "interactive_year_filter.json";
-    vegaEmbed('#vis-map', spec_url_map, embed_options)
+    var vis3 = "year_filter_map.json";
+    vegaEmbed('#vis3', vis3, embed_options)
       .then(function(result) {
         console.log("Map Visualization rendered.");
       })
       .catch(console.error);
 
-    var spec_url_map2 = "station_map_temp.json";
-    vegaEmbed('#vis-map2', spec_url_map2, embed_options)
+    var vis1 = "average_temp_map.json";
+    vegaEmbed('#vis1', vis1, embed_options)
+      .then(function(result) {
+        console.log("Map Visualization rendered.");
+      })
+      .catch(console.error);
+
+    var vis4 = "heatmap.json";
+    vegaEmbed('#vis4', vis4, embed_options)
+      .then(function(result) {
+        console.log("Map Visualization rendered.");
+      })
+      .catch(console.error);
+
+    var vis5 = "temp_vs_elevation.json";
+    vegaEmbed('#vis5', vis5, embed_options)
+      .then(function(result) {
+        console.log("Map Visualization rendered.");
+      })
+      .catch(console.error);
+
+    var vis6 = "lat_temp.json";
+    vegaEmbed('#vis6', vis6, embed_options)
+      .then(function(result) {
+        console.log("Map Visualization rendered.");
+      })
+      .catch(console.error);
+
+    var vis7 = "temp_distr.json";
+    vegaEmbed('#vis7', vis7, embed_options)
       .then(function(result) {
         console.log("Map Visualization rendered.");
       })

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "AustralianAverageMaxTemp.csv"},
+  "title": "Distribution of Maximum Recorded Temperatures",
+  "mark": {"type":"rect", "fill": "darkorange", "stroke":"black"},
+  "width": 600,
+  "encoding": {
+    "x": {
+      "field": "Temp",
+      "bin": {"maxbins": 30},
+      "type": "ordinal",
+      "title": "Temperature (°C)"
+    },
+    "y": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Record Count"
+    },
+    "tooltip": [
+      {"field": "Temp", "type": "ordinal", "bin": {"maxbins": 30}, "title": "Temp Range (°C)"},
+      {"aggregate": "count", "title": "Count"}
+    ]
+  }
+}

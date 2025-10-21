@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Relationship between elevation and temperature",
+  "data": { "url": "AustralianAverageMaxTemp.csv" },
+  "width": 600,
+  "params": [{"name": "ChosenYear", "value": 1980, "bind": {"input": "range", "min": 1975, "max": 2019, "step": 1}}],
+  "transform": [
+    {"calculate": "toNumber(datum.elev)", "as": "Elevation"},
+    {"calculate": "toNumber(datum.Temp)", "as": "Temp"},
+    {"filter": "datum.Year == ChosenYear"}
+  ],
+  "mark": {"type":"circle", "fill": "red"},
+  "encoding": {
+    "x": {"field": "Elevation", "type": "quantitative", "title": "Elevation (m)"},
+    "y": {"field": "Temp", "type": "quantitative", "title": "Temperature (°C)"},
+    "tooltip": [{"field": "name"}, {"field": "Elevation"}, {"field": "Temp"}]
+  },
+  "title": "Temperature vs. Elevation (All Stations)"
+}

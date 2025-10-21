@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Relationship between elevation and temperature",
+  "data": { "url": "AustralianAverageMaxTemp.csv" },
+  "width": 600,
+  "transform": [
+    {"calculate": "toNumber(datum.lat)", "as": "Latitude"},
+    {"calculate": "toNumber(datum.Temp)", "as": "Temp"}
+  ],
+  "mark": {"type":"circle", "fill": "orange"},
+  "encoding": {
+    "x": {"field": "Latitude", "type": "quantitative", "title": "Latitude (°)"},
+    "y": {"field": "Temp", "type": "quantitative", "title": "Temperature (°C)"},
+    "tooltip": [{"field": "name"}, {"field": "Latitude"}, {"field": "Temp"}]
+  },
+  "title": "Temperature vs. Latitude (All Stations)"
+}
